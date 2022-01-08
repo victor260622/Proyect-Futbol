@@ -1,30 +1,56 @@
 const scrapping = require("cheerio");
 const callJS = require("./call");
 
-const scrap = async function () {
-  let filas = [];
 
-  const pagina = await callJS();
-  const selector = scrapping.load(pagina.data);
+let scrap = async function () {
+  let row = [];
+
+  const page = await callJS();
+  const selector = scrapping.load(page.data);
 
   selector("table tbody tr").each((i, line) => {
-    let columnas = [];
+    let columns = [];
 
-    selector(line).find("td").each((i, td) => { 
-      if(i == 1) {
-        const equipo = {
+    selector(line).find("td").each((i, td) => {
+      if (i == 1) {
+        const team = {
           logo: selector(td).find("a img").attr("src"),
           name: selector(td).find("a .d-none").text(),
         }
-        return columnas.push(equipo);
+        return columns.push(team);
       }
-      columnas.push(selector(td).html());
+      columns.push(selector(td).text().trim());
     });
 
-    filas.push(columnas);
+    row.push(columns);
+
+  });
+  /* console.log(filas.length); */
+
+  let tableJson = row.map((x) => {
+    return {
+      pos: x[0],
+      team: x[1],
+      pj: x[2],
+      g: x[3],
+      e: x[4],
+      p: x[5],
+      gf: x[6],
+      gc: x[7],
+      dg: x[8],
+      pts: x[9],
+    };
   });
 
-  console.log(filas[0]);
-};
 
-scrap();
+  /*  console.log(tablaJson); */
+  const data = {
+    teams: tableJson
+  };
+
+  console.log(JSON.stringify(data));
+  return data;
+
+};
+/* scrap(); */
+module.exports = scrap;
