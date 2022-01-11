@@ -1,15 +1,19 @@
 const express = require("express");
-const {create} = require("express-handlebars");
-const app = express();
-const hbs = create({
-    extname: ".hbs",
-    defaultLayout: false
-});
-// Register hbs.engine with the Express app.
-app.engine(".hbs", hbs.engine);
-app.set("view engine", ".hbs");
-app.set("views", "./Front");
+const Handlebars = require("handlebars");
+const { engine } = require("express-handlebars");
+const { allowInsecurePrototypeAccess } = require("@handlebars/allow-prototype-access");
 
+
+
+const app = express();
+app.engine("handlebars", engine({
+    defaultLayout: false,
+    handlebars: allowInsecurePrototypeAccess(Handlebars),
+}));
+
+app.set("view engine", "handlebars");
+app.set("views", "./Front");
+app.use(express.static("./Front/assets"));
 
 
 module.exports = app;

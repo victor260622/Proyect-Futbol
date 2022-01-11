@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./css/styles.css" rel="stylesheet" type="text/css">
+    <title>Tabla de Posiciones</title>
+</head>
+<body>
+    
+    <header class="header">
+
+        <div class="header-nav">
+
+            <div class="header-logo">
+                <p>Liga Profesional de Futbol Argentino</p>
+            </div>
+
+            <div class="header-link">
+                <a href="#">Inicio</a>
+            </div>
+
+        </div>
+
+    </header>
+    <section class="anuncio">
+        <div class="anuncio-img"></div>
+    </section>
+
+    <main class="tabla">
+        <header class="tabla-header">
+            <h1>LIGA PROFESIONAL</h1>
+            <h2>Argentina</h2>
+            <h3>TABLA DE POSICIONES</h3>
+        </header>
+        
+        <section>
+            <div class="tabla-posicion">
+                <table>                            
+                         <tr class="bg-team">
+                              <th>POS</th>
+                              <th>Equipo</th>
+                              <th>PJ</th>
+                              <div class="delete">
+                                    <th class="delete">G</th>
+                                    <th class="delete">E</th>
+                                    <th class="delete">P</th>
+                                    <th class="delete">GF</th>
+                                    <th class="delete">GC</th>
+                                </div>
+                                <th>DG</th>
+                                <th>Pts</th>
+                        </tr>
+                                                    
+                        {{#each teams}}                      
+                            <tr>
+                                <td class="bg-team">{{pos}}</td>
+                                <td>{{team.name}}</td>
+                                <td class="bg-team">{{pj}}</td>
+                                <div>
+                                    <td class="delete">{{g}}</td>
+                                    <td class="delete">{{e}}</td>
+                                    <td class="delete">{{p}}</td>
+                                    <td class="delete">{{gf}}</td>
+                                    <td class="delete">{{gc}}</td>
+
+                                </div>
+                                <td>{{dg}}</td>
+                                <td class="bg-team">{{pts}}</td>
+                            </tr>
+                        {{/each}}
+
+                        
+                    
+                    
+                </table>
+                
+            </div>
+        </section>
+    </main>
+    
+
+
+    <footer class="footer">
+        <div>
+            <p>©Victor Lovera Todos los derechos reservados.</p>
+        </div>
+
+    </footer>
+
+</body>
+</html>

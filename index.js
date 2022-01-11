@@ -1,26 +1,23 @@
-const mongoose = require("mongoose");
+const db = require("./Back/db");
 const app = require("./Back/express");
-const scrap = require("./Back/scrapping");
-const port = 8888;
+const Robot = require("./Back/robot");
+const port = process.env.PORT || 8888;
+const robotmin = process.env.robotmin || 10;
 
-mongoose
-  .connect("mongodb://127.0.0.1:27017/TablaDePosiciones")
-  .then(() => console.log("Connected to MongoDB..."))
-  .catch((err) => console.error("Could not connect to MongoDB..."));
 
-const puntuajeModelo = require("./Back/posiciones.model")(mongoose);
+
+
+
+const puntuajeModelo = require("./Back/posiciones.model")(db);
+const robot = new Robot(puntuajeModelo);
 
 app.get("/", async (req, res) => { 
-  
-  const data = new puntuajeModelo(await scrap());
-  const saving = await data.save();
-  console.log(saving);
-  res.render("index", data);
+  const query = await puntuajeModelo.findOne().lean().exec();
+  res.render("index", query);
 });
-  
-    
-    
 
 app.listen(port, () => {
     console.log(`Server conectado en el puerto: ${port}`);
 });
+
+robot.schedule(robotmin);
