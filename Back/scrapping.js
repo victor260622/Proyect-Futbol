@@ -14,11 +14,14 @@ let scrap = async function () {
     selector(line).find("td").each((i, td) => {
       if (i == 1) {
         const team = {
-          logo: selector(td).find("a img").attr("src"),
-          name: selector(td).find("a .d-none").text(),
+          logo: selector(td).find("a").find("img").attr("data-src"),
+          longName: selector(td).find("a").find(".d-md-inline").text(),
+          shortName: selector(td).find("a").find(".d-md-none").text()
+          
         }
         return columns.push(team);
       }
+      
       columns.push(selector(td).text().trim());
     });
 
@@ -47,10 +50,10 @@ let scrap = async function () {
   const data = {
     teams: tableJson
   };
-
   /* console.log(JSON.stringify(data)); */
+  
   return data;
-
+  
 };
 /* scrap(); */
 module.exports = scrap;

@@ -56,7 +56,7 @@
                         {{#each teams}}                      
                             <tr>
                                 <td class="bg-team">{{pos}}</td>
-                                <td>{{team.name}}</td>
+                                <td class="hideShow"><img src="{{team.logo}}"><div class="show">{{team.shortName}}</div><div class="delete">{{team.longName}}</div></td>
                                 <td class="bg-team">{{pj}}</td>
                                 <div>
                                     <td class="delete">{{g}}</td>

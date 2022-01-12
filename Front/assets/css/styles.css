@@ -131,11 +131,14 @@ main {
 }
 
 
+
 /* DATOS DE LA TABLA */
+
 
 h1 {
     margin-bottom: 0rem;
 }
+
 h2 {
     margin-top: 0rem;
 }
@@ -162,11 +165,26 @@ td, th {
 .delete{
     display: none;
 }
+.hideShow{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.hideShow img{
+    margin-right: 0.3rem;
+}
 @media(min-width:760px){
     .delete{
         display: table-cell;
     }
+    .show {
+        display: none;
+    }
+    .hideShow img{
+        margin-right: 1rem;
+    }
 }
+
 
 
 /* FOOTER */

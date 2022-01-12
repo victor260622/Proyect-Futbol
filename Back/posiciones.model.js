@@ -5,7 +5,9 @@ module.exports = function (mongoose) {
             pos: { type: String },
             team: {
               logo: { type: String },
-              name: { type: String },
+              longName: { type: String },
+              shortName: { type: String },
+
             },
             pj: { type: String },
             g: { type: String },
