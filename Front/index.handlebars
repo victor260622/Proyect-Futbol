@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,8 +8,9 @@
     <link href="./css/styles.css" rel="stylesheet" type="text/css">
     <title>Tabla de Posiciones</title>
 </head>
+
 <body>
-    
+
     <header class="header">
 
         <div class="header-nav">
@@ -34,52 +36,55 @@
             <h2>Argentina</h2>
             <h3>TABLA DE POSICIONES</h3>
         </header>
-        
+
         <section>
             <div class="tabla-posicion">
-                <table>                            
-                         <tr class="bg-team">
-                              <th>POS</th>
-                              <th>Equipo</th>
-                              <th>PJ</th>
-                              <div class="delete">
-                                    <th class="delete">G</th>
-                                    <th class="delete">E</th>
-                                    <th class="delete">P</th>
-                                    <th class="delete">GF</th>
-                                    <th class="delete">GC</th>
-                                </div>
-                                <th>DG</th>
-                                <th>Pts</th>
-                        </tr>
-                                                    
-                        {{#each teams}}                      
-                            <tr>
-                                <td class="bg-team">{{pos}}</td>
-                                <td class="hideShow"><img src="{{team.logo}}"><div class="show">{{team.shortName}}</div><div class="delete">{{team.longName}}</div></td>
-                                <td class="bg-team">{{pj}}</td>
-                                <div>
-                                    <td class="delete">{{g}}</td>
-                                    <td class="delete">{{e}}</td>
-                                    <td class="delete">{{p}}</td>
-                                    <td class="delete">{{gf}}</td>
-                                    <td class="delete">{{gc}}</td>
+                <table>
+                    <tr class="bg-team">
+                        <th>POS</th>
+                        <th>Equipo</th>
+                        <th>PJ</th>
+                        <div class="delete">
+                            <th class="delete">G</th>
+                            <th class="delete">E</th>
+                            <th class="delete">P</th>
+                            <th class="delete">GF</th>
+                            <th class="delete">GC</th>
+                        </div>
+                        <th>DG</th>
+                        <th>Pts</th>
+                    </tr>
 
-                                </div>
-                                <td>{{dg}}</td>
-                                <td class="bg-team">{{pts}}</td>
-                            </tr>
-                        {{/each}}
+                    {{#each teams}}
+                    <tr class= "{{#lessThan @index 3}}top3{{/lessThan}}">
+                        <td class="bg-team">{{pos}}</td>
+                        <td class="hideShow"><img src="{{team.logo}}">
+                            <div class="show">{{team.shortName}}</div>
+                            <div class="delete">{{team.longName}}</div>
+                        </td>
+                        <td class="bg-team">{{pj}}</td>
+                        <div>
+                            <td class="delete">{{g}}</td>
+                            <td class="delete">{{e}}</td>
+                            <td class="delete">{{p}}</td>
+                            <td class="delete">{{gf}}</td>
+                            <td class="delete">{{gc}}</td>
 
-                        
-                    
-                    
+                        </div>
+                        <td>{{dg}}</td>
+                        <td class="bg-team">{{pts}}</td>
+                    </tr>
+                    {{/each}}
+
+
+
+
                 </table>
-                
+
             </div>
         </section>
     </main>
-    
+
 
 
     <footer class="footer">
@@ -90,4 +95,5 @@
     </footer>
 
 </body>
+
 </html>
