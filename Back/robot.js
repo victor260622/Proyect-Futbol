@@ -6,7 +6,7 @@ class Robot {
   }
 
   async schedule(robotmili) {
-    setInterval(() => {
+    setInterval(async () => {
       const dataScrap = await scrap();
       await this.model
         .findOneAndUpdate({}, dataScrap, { upsert: true })
