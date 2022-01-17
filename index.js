@@ -2,7 +2,7 @@ const db = require("./Back/db");
 const app = require("./Back/express");
 const Robot = require("./Back/robot");
 const port = process.env.PORT || 8888;
-const robotmin = process.env.robotmin || 10;
+const robotmili = process.env.robotmili || 600000;
 
 
 
@@ -20,4 +20,4 @@ app.listen(port, () => {
     console.log(`Server conectado en el puerto: ${port}`);
 });
 
-robot.schedule(robotmin);
+robot.schedule(robotmili);
