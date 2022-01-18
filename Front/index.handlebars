@@ -16,7 +16,7 @@
     <meta property="og:site_name" content="Tabla de posiciones. Liga de futbol profesional Argentino">
     <meta property="og:image:alt" content="¡¡Chequea las posiciones de la liga de futbol profesional Argentina!!">
     <meta property="og:image" content="https://tablasfb.herokuapp.com/img/Captura.PNG">
-    <meta property="og:description" content="Tabla de posiciones de la liga de futbol Argentina">
+    <meta property="og:description" content="Tabla de posiciones de la liga de futbol Argentinagit">
 
     <meta name="description" content="Tabla de posiciones de la liga de futbol Argentina" />
     <meta name="author" content="Victor Lovera" />
@@ -74,7 +74,7 @@
                     </tr>
 
                     {{#each teams}}
-                    <tr class= "{{#lessThan @index 3}}top3{{/lessThan}}">
+                    <tr class= "{{#lessThen @index 4}}top4{{/lessThen}} {{#lastFour ../teams.length @index}}last4{{/lastFour}}">
                         <td class="bg-team">{{pos}}</td>
                         <td class="hideShow"><img src="{{team.logo}}">
                             <div class="show">{{team.shortName}}</div>
